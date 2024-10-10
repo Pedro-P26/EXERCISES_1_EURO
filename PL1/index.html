@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> === Euromilhões === </title>
+    <!--link rel="stylesheet" href="style.css" type=text/css-->
+    <link rel="stylesheet" href="stylePL1.css" type=text/css>
+
+</head>
+<body>
+    <h1>Euromilhões</h1>
+
+    <div id="divcontainer">
+    <div id="divBet">
+        <div id="divMain">
+            <ol class="numbers" id="olMain">
+                <li>12</li>
+                <li>24</li>
+                <li>33</li>
+                <li>44</li>
+                <li>49</li>
+            </ol>
+        </div>
+        <div id="divStars">
+            <ol class="numbers" id="olStars">
+                <li>1</li>
+                <li>3</li>
+            </ol>
+        </div>
+        <button id="genBtn"> Gerar Chave </button>
+    </div>
+    <h1>Boa Sorte</h1>
+    pedro moreira
+    </div>
+</div></body>
+</html>
+<script type="text/javascript">
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+        botao = document.getElementById("genBtn");
+        botao.addEventListener("click", geraChave);
+    })
+
+    botao = document.getElementById("genBtn");
+    
+    botao.addEventListener("click",geraChave);
+
+    // gera array de num numeros entre min e max sem repeticoes
+    function gerador(num, min, max) {
+        //debugger;
+        resultado = new Set();
+        while (resultado.size < num) {
+            novo = Math.floor(Math.random() * (max - min + 1) + min);
+            resultado.add(novo)
+        }
+        return [...resultado].sort((a,b)=>a-b);
+    }
+    
+    function geraChave()  {
+
+        let numeros = gerador(5,1,50);
+        let estrelas = gerador(2,1,12);
+
+
+        let listanumeros = document.getElementById("olMain");
+        listanumeros.innerHTML = "";
+        for (i=0;i<5;i++) {
+            let newli = document.createElement('li')
+            newli.innerHTML = numeros[i];
+            listanumeros.appendChild(newli);
+        }
+
+        let listaestrelas = document.getElementById("olStars");
+        listaestrelas.innerHTML = "";
+        estrelas.forEach((estrela) => {
+            let newli = document.createElement('li');
+            newli.innerHTML = estrela;
+            listaestrelas.appendChild(newli);
+        });
+        
+    }
+
+
+    
+</script>
